@@ -1,0 +1,17 @@
+{
+    "welcome": "वसुंधरा स्मार्ट फार्म में आपका स्वागत है",
+    "login": "लॉगिन",
+    "dashboard": "डैशबोर्ड",
+    "soil_recommendation": "मिट्टी की सिफारिश",
+    "organic_farming": "जैविक खेती",
+    "weather": "मौसम",
+    "market_prices": "बाजार भाव",
+    "disease_detection": "रोग की पहचान",
+    "home": "होम",
+    "sign_in": "साइन इन करें",
+    "your_full_name": "आपका पूरा नाम",
+    "password_optional": "पासवर्ड (डेमो के लिए वैकल्पिक)",
+    "back_to_home": "होम पर वापस जाएं",
+    "welcome_back": "स्वागत है",
+    "sign_in_to_vasundhara": "वसुंधरा में साइन इन करें"
+}

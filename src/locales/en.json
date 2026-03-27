@@ -1,0 +1,17 @@
+{
+    "welcome": "Welcome to Vasundhara Smart Farm",
+    "login": "Login",
+    "dashboard": "Dashboard",
+    "soil_recommendation": "Soil Recommendation",
+    "organic_farming": "Organic Farming",
+    "weather": "Weather",
+    "market_prices": "Market Prices",
+    "disease_detection": "Disease Detection",
+    "home": "Home",
+    "sign_in": "Sign In",
+    "your_full_name": "Your full name",
+    "password_optional": "Password (optional for demo)",
+    "back_to_home": "Back to Home",
+    "welcome_back": "Welcome Back",
+    "sign_in_to_vasundhara": "Sign in to Vasundhara"
+}
