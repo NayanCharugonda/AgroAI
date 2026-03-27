@@ -91,7 +91,7 @@ export default function StorageMapPage() {
       </p>
 
       {/* Map */}
-      <div className="vasundhara-card overflow-hidden mb-8 bg-card border border-border">
+      <div className="agroai-card overflow-hidden mb-8 bg-card border border-border">
         <div className="w-full h-[400px]">
           <Map
             center={mapCenter}
@@ -115,7 +115,7 @@ export default function StorageMapPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.05 }}
-            className="vasundhara-card p-5 bg-card"
+            className="agroai-card p-5 bg-card"
           >
             <div className="flex items-start justify-between mb-3">
               <div>

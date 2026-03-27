@@ -19,7 +19,7 @@ function Selector<T extends string>({ label, icon, options, value, onChange }: {
   label: string; icon: React.ReactNode; options: readonly T[]; value: T | ''; onChange: (v: T) => void;
 }) {
   return (
-    <div className="vasundhara-card p-4 bg-card">
+    <div className="agroai-card p-4 bg-card">
       <label className="flex items-center gap-2 text-sm font-heading font-semibold text-foreground mb-2">
         {icon} {label}
       </label>
@@ -42,7 +42,7 @@ function Selector<T extends string>({ label, icon, options, value, onChange }: {
 function PestRiskMeter({ level }: { level: 'Low' | 'Medium' | 'High' }) {
   const config = { Low: { pct: 25, color: 'text-primary' }, Medium: { pct: 55, color: 'text-secondary' }, High: { pct: 85, color: 'text-destructive' } }[level];
   return (
-    <div className="vasundhara-card p-4 bg-card">
+    <div className="agroai-card p-4 bg-card">
       <h4 className="text-sm font-heading font-semibold text-foreground flex items-center gap-2 mb-2">
         <Bug className="w-4 h-4 text-primary" /> Pest Risk Level
       </h4>
@@ -112,7 +112,7 @@ export default function OrganicFarmingPage() {
       </div>
 
       {/* ── 6: Dynamic Sustainability Score ── */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="vasundhara-card p-5 bg-card mb-6">
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="agroai-card p-5 bg-card mb-6">
         <div className="flex items-center justify-between mb-3">
           <h2 className="font-heading font-semibold text-foreground flex items-center gap-2">
             <Recycle className="w-5 h-5 text-primary" /> Sustainability Score
@@ -146,7 +146,7 @@ export default function OrganicFarmingPage() {
               { icon: '🔄', title: 'Next Season Rotation', value: plan.nextRotation, sub: 'Rotate to maintain soil health' },
               { icon: '💧', title: 'Water Requirement', value: plan.waterNeed, sub: rainStrat ? rainStrat.irrigation : 'Select rainfall for irrigation plan' },
             ].map((card, i) => (
-              <motion.div key={card.title} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }} className="vasundhara-card p-4 bg-card">
+              <motion.div key={card.title} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }} className="agroai-card p-4 bg-card">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-2xl">{card.icon}</span>
                   <h3 className="font-heading font-semibold text-foreground text-sm">{card.title}</h3>
@@ -163,7 +163,7 @@ export default function OrganicFarmingPage() {
       {stageAdv && (
         <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="grid sm:grid-cols-2 gap-4 mb-8">
           <PestRiskMeter level={stageAdv.pestRisk} />
-          <div className="vasundhara-card p-4 bg-card">
+          <div className="agroai-card p-4 bg-card">
             <h4 className="text-sm font-heading font-semibold text-foreground flex items-center gap-2 mb-2">
               <AlertTriangle className="w-4 h-4 text-secondary" /> Deficiency Warning
             </h4>
@@ -174,7 +174,7 @@ export default function OrganicFarmingPage() {
 
       {/* ── Rainfall strategy ── */}
       {rainStrat && (
-        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="vasundhara-card p-5 bg-card mb-8">
+        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="agroai-card p-5 bg-card mb-8">
           <h3 className="font-heading font-semibold text-foreground mb-3 flex items-center gap-2">
             <Droplets className="w-5 h-5 text-primary" /> Rainfall Strategy ({rainfall})
           </h3>
@@ -201,7 +201,7 @@ export default function OrganicFarmingPage() {
 
       {/* ── Soil adjustments ── */}
       {soilAdj && (
-        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="vasundhara-card p-5 bg-card mb-8">
+        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="agroai-card p-5 bg-card mb-8">
           <h3 className="font-heading font-semibold text-foreground mb-3 flex items-center gap-2">
             <Layers className="w-5 h-5 text-primary" /> Soil Adjustments for {soil}
           </h3>
@@ -223,7 +223,7 @@ export default function OrganicFarmingPage() {
       )}
 
       {/* ── Nutrient Deficiency Guide ── */}
-      <div className="vasundhara-card p-5 bg-card mb-8">
+      <div className="agroai-card p-5 bg-card mb-8">
         <h3 className="font-heading font-semibold text-foreground mb-4 flex items-center gap-2">
           <Thermometer className="w-5 h-5 text-primary" /> Nutrient Deficiency Detection Guide
         </h3>
@@ -239,7 +239,7 @@ export default function OrganicFarmingPage() {
       </div>
 
       {/* ── 7: Certification Guidance ── */}
-      <div className="vasundhara-card p-5 bg-card mb-8">
+      <div className="agroai-card p-5 bg-card mb-8">
         <h3 className="font-heading font-semibold text-foreground mb-4 flex items-center gap-2">
           <Award className="w-5 h-5 text-primary" /> Organic Certification Journey
         </h3>
@@ -267,7 +267,7 @@ export default function OrganicFarmingPage() {
       </div>
 
       {/* ── Weather Alert Placeholder ── */}
-      <div className="vasundhara-card p-4 bg-card mb-8 border-dashed">
+      <div className="agroai-card p-4 bg-card mb-8 border-dashed">
         <div className="flex items-center gap-2 text-muted-foreground">
           <AlertTriangle className="w-4 h-4" />
           <p className="text-sm">Weather-based alerts will appear here when integrated with live weather data.</p>
@@ -276,7 +276,7 @@ export default function OrganicFarmingPage() {
 
       {/* ── Download Action Plan ── */}
       {hasSelections && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="vasundhara-card p-4 bg-card mb-8">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="agroai-card p-4 bg-card mb-8">
           <button
             onClick={() => {
               const text = [

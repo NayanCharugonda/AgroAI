@@ -88,7 +88,7 @@ export default function DiseaseDetectionPage() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="vasundhara-card p-8 mb-8 bg-card text-center border-dashed border-2 border-primary/20"
+        className="agroai-card p-8 mb-8 bg-card text-center border-dashed border-2 border-primary/20"
       >
         <input
           type="file"
@@ -125,7 +125,7 @@ export default function DiseaseDetectionPage() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className={`vasundhara-card p-6 mb-8 border-l-4 ${diagnosis.status === 'healthy' ? 'border-primary' : 'border-destructive'}`}
+            className={`agroai-card p-6 mb-8 border-l-4 ${diagnosis.status === 'healthy' ? 'border-primary' : 'border-destructive'}`}
           >
             <div className="flex items-start gap-4">
               <div className={`p-3 rounded-xl ${diagnosis.status === 'healthy' ? 'bg-primary/10 text-primary' : 'bg-destructive/10 text-destructive'}`}>
@@ -166,7 +166,7 @@ export default function DiseaseDetectionPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
             onClick={() => setSelectedDisease(selectedDisease === i ? null : i)}
-            className="vasundhara-card overflow-hidden cursor-pointer bg-card"
+            className="agroai-card overflow-hidden cursor-pointer bg-card"
           >
             <div className="h-40 bg-muted overflow-hidden">
               <img src={d.imageUrl} alt={d.name} className="w-full h-full object-cover" />

@@ -53,7 +53,7 @@ export default function Navbar({ activePage, onNavigate }: NavbarProps) {
         {/* Logo */}
         <button onClick={() => onNavigate('home')} className="flex items-center gap-2">
           <Leaf className="w-7 h-7 text-primary" />
-          <span className="text-xl font-heading font-bold vasundhara-gradient-text">Vasundhara</span>
+          <span className="text-xl font-heading font-bold agroai-gradient-text">AgroAI</span>
         </button>
 
         {/* Desktop nav */}

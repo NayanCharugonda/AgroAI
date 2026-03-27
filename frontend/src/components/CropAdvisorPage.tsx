@@ -132,7 +132,7 @@ export default function CropAdvisorPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
-            className="vasundhara-card p-5 bg-card"
+            className="agroai-card p-5 bg-card"
           >
             <div className="flex items-center justify-between mb-3">
               <Leaf className="w-8 h-8 text-primary" />
@@ -166,7 +166,7 @@ export default function CropAdvisorPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
-            className="vasundhara-card overflow-hidden bg-card"
+            className="agroai-card overflow-hidden bg-card"
           >
             <div className="h-40 bg-muted overflow-hidden relative">
               <img

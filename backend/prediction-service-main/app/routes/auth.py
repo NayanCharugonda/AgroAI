@@ -6,7 +6,7 @@ import datetime
 router = APIRouter()
 
 # Simple secret for demo purposes
-SECRET_KEY = "vasundhara-secret-key"
+SECRET_KEY = "agroai-secret-key"
 
 @router.post("/login", response_model=AuthResponse)
 async def login(request: LoginRequest):

@@ -97,16 +97,16 @@ export default function LoginPage({ onNavigate }: LoginPageProps) {
   }, []);
 
   return (
-    <div className="min-h-screen vasundhara-hero-bg flex items-center justify-center p-6">
+    <div className="min-h-screen agroai-hero-bg flex items-center justify-center p-6">
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         className="w-full max-w-md"
       >
-        <div className="vasundhara-card p-8 bg-card">
+        <div className="agroai-card p-8 bg-card">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-heading font-bold text-foreground mb-2">{t('welcome_back')}</h1>
-            <p className="text-muted-foreground">{t('sign_in_to_vasundhara')}</p>
+            <p className="text-muted-foreground">{t('sign_in_to_agroai')}</p>
           </div>
 
           {/* Voice Login */}
@@ -115,7 +115,7 @@ export default function LoginPage({ onNavigate }: LoginPageProps) {
               onClick={startVoiceLogin}
               whileTap={{ scale: 0.95 }}
               className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4 transition-all ${isListening
-                ? 'bg-destructive vasundhara-glow'
+                ? 'bg-destructive agroai-glow'
                 : 'bg-primary hover:bg-primary/90'
                 }`}
             >

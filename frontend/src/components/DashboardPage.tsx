@@ -85,7 +85,7 @@ export default function DashboardPage({ onNavigate }: DashboardPageProps) {
           { label: 'Alerts', value: '3', sub: 'Pending' },
           { label: 'Yield Score', value: '87%', sub: 'Good' },
         ].map((stat, i) => (
-          <motion.div key={stat.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="vasundhara-card p-5 bg-card">
+          <motion.div key={stat.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="agroai-card p-5 bg-card">
             <p className="text-sm text-muted-foreground">{stat.label}</p>
             <p className="text-2xl font-heading font-bold text-foreground">{stat.value}</p>
             <p className="text-xs text-muted-foreground">{stat.sub}</p>
@@ -190,7 +190,7 @@ export default function DashboardPage({ onNavigate }: DashboardPageProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.03 }}
             onClick={() => onNavigate(action.page)}
-            className="vasundhara-card p-4 cursor-pointer bg-card flex items-center gap-3"
+            className="agroai-card p-4 cursor-pointer bg-card flex items-center gap-3"
           >
             <div className={`w-10 h-10 rounded-xl ${action.color} flex items-center justify-center shrink-0`}>
               <action.icon className="w-5 h-5" />

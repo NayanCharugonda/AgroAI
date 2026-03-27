@@ -14,17 +14,17 @@ export default function RoleSelectionPage({ onNavigate }: RoleSelectionPageProps
     const [location, setLocation] = useState(currentUser?.location || '');
 
     return (
-        <div className="min-h-screen vasundhara-hero-bg flex items-center justify-center p-6">
+        <div className="min-h-screen agroai-hero-bg flex items-center justify-center p-6">
             <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="w-full max-w-lg"
             >
-                <div className="vasundhara-card p-8 bg-card text-center">
+                <div className="agroai-card p-8 bg-card text-center">
                     <h1 className="text-3xl font-heading font-bold text-foreground mb-2">
                         Welcome, {currentUser?.name}! 🌾
                     </h1>
-                    <p className="text-muted-foreground mb-8">How would you like to use Vasundhara?</p>
+                    <p className="text-muted-foreground mb-8">How would you like to use AgroAI?</p>
 
                     {/* Location Input */}
                     <div className="relative mb-8 max-w-sm mx-auto">
@@ -46,7 +46,7 @@ export default function RoleSelectionPage({ onNavigate }: RoleSelectionPageProps
                                 if (location.trim()) setCurrentLocation(location.trim());
                                 onNavigate('dashboard');
                             }}
-                            className="vasundhara-card p-6 bg-primary/5 hover:bg-primary/10 transition-colors text-left group cursor-pointer border-2 border-transparent hover:border-primary"
+                            className="agroai-card p-6 bg-primary/5 hover:bg-primary/10 transition-colors text-left group cursor-pointer border-2 border-transparent hover:border-primary"
                         >
                             <div className="w-16 h-16 rounded-2xl bg-primary/15 flex items-center justify-center mb-4 group-hover:bg-primary/25 transition-colors">
                                 <Tractor className="w-8 h-8 text-primary" />
@@ -65,7 +65,7 @@ export default function RoleSelectionPage({ onNavigate }: RoleSelectionPageProps
                                 if (location.trim()) setCurrentLocation(location.trim());
                                 onNavigate('marketplace');
                             }}
-                            className="vasundhara-card p-6 bg-secondary/5 hover:bg-secondary/10 transition-colors text-left group cursor-pointer border-2 border-transparent hover:border-secondary"
+                            className="agroai-card p-6 bg-secondary/5 hover:bg-secondary/10 transition-colors text-left group cursor-pointer border-2 border-transparent hover:border-secondary"
                         >
                             <div className="w-16 h-16 rounded-2xl bg-secondary/15 flex items-center justify-center mb-4 group-hover:bg-secondary/25 transition-colors">
                                 <ShoppingCart className="w-8 h-8 text-secondary" />

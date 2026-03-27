@@ -1,5 +1,5 @@
 {
-    "welcome": "Welcome to Vasundhara Smart Farm",
+    "welcome": "Welcome to AgroAI Smart Farm",
     "login": "Login",
     "dashboard": "Dashboard",
     "soil_recommendation": "Soil Recommendation",
@@ -13,5 +13,5 @@
     "password_optional": "Password (optional for demo)",
     "back_to_home": "Back to Home",
     "welcome_back": "Welcome Back",
-    "sign_in_to_vasundhara": "Sign in to Vasundhara"
+    "sign_in_to_agroai": "Sign in to AgroAI"
 }

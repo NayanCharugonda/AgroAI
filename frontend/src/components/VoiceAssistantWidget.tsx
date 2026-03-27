@@ -31,7 +31,7 @@ export default function VoiceAssistant({ onNavigate }: VoiceAssistantProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [transcript, setTranscript] = useState('');
-  const [response, setResponse] = useState('Hi! I\'m your Vasundhara assistant. Say "Go to weather" or "Show crop advisor" to navigate. Ask me anything about farming!');
+  const [response, setResponse] = useState('Hi! I\'m your AgroAI assistant. Say "Go to weather" or "Show crop advisor" to navigate. Ask me anything about farming!');
   const [messages, setMessages] = useState<{ role: string; text: string }[]>([]);
   const recognitionRef = useRef<any>(null);
 
@@ -169,7 +169,7 @@ export default function VoiceAssistant({ onNavigate }: VoiceAssistantProps) {
       {/* Floating button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 w-20 h-20 rounded-full bg-primary flex items-center justify-center shadow-2xl hover:scale-110 transition-transform vasundhara-glow"
+        className="fixed bottom-6 right-6 z-50 w-20 h-20 rounded-full bg-primary flex items-center justify-center shadow-2xl hover:scale-110 transition-transform agroai-glow"
         whileTap={{ scale: 0.9 }}
       >
         {isOpen ? <X className="w-8 h-8 text-primary-foreground" /> : <Mic className="w-10 h-10 text-primary-foreground" />}
@@ -188,11 +188,11 @@ export default function VoiceAssistant({ onNavigate }: VoiceAssistantProps) {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-24 right-6 z-50 w-80 max-h-[500px] vasundhara-card bg-card flex flex-col overflow-hidden"
+            className="fixed bottom-24 right-6 z-50 w-80 max-h-[500px] agroai-card bg-card flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="bg-primary p-4">
-              <h3 className="font-heading font-semibold text-primary-foreground">Vasundhara Assistant</h3>
+              <h3 className="font-heading font-semibold text-primary-foreground">AgroAI Assistant</h3>
               <p className="text-xs text-primary-foreground/70">Voice-powered farming helper</p>
             </div>
 

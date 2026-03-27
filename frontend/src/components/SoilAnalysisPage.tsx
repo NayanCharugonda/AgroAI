@@ -102,7 +102,7 @@ export default function SoilAnalysisPage() {
 
       {/* Soil Input Form */}
       <div className="grid lg:grid-cols-3 gap-6 mb-8">
-        <div className="lg:col-span-2 vasundhara-card p-6 bg-card">
+        <div className="lg:col-span-2 agroai-card p-6 bg-card">
           <h2 className="font-heading font-semibold text-foreground mb-4 flex items-center gap-2">
             <Droplets className="w-5 h-5 text-accent" /> {t('soil_test_values')}
           </h2>
@@ -167,12 +167,12 @@ export default function SoilAnalysisPage() {
 
         {/* Confidence + Health indicators */}
         <div className="space-y-4">
-          <div className="vasundhara-card p-5 bg-card">
+          <div className="agroai-card p-5 bg-card">
             <h3 className="text-sm font-heading font-semibold text-muted-foreground mb-2">AI Confidence Score</h3>
             <div className="text-4xl font-heading font-bold text-accent mb-2">{confidence}%</div>
             <Progress value={confidence} className="h-2" />
           </div>
-          <div className="vasundhara-card p-5 bg-card">
+          <div className="agroai-card p-5 bg-card">
             <h3 className="text-sm font-heading font-semibold text-muted-foreground mb-2">Soil Health</h3>
             <div className={`text-3xl font-heading font-bold ${healthScore >= 70 ? 'text-primary' : 'text-warning'} mb-1`}>
               {healthScore >= 70 ? 'Good' : healthScore > 0 ? 'Moderate' : 'N/A'}
@@ -188,7 +188,7 @@ export default function SoilAnalysisPage() {
           <h2 className="text-xl font-heading font-semibold text-foreground flex items-center gap-2">
             <Leaf className="w-5 h-5 text-primary" /> Recommended Crop
           </h2>
-          <div className="vasundhara-card p-6 bg-card border-primary/30">
+          <div className="agroai-card p-6 bg-card border-primary/30">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-4">
                 <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-3xl">🌱</div>

@@ -48,15 +48,14 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   const login = useCallback(async (credentials: { identifier: string; password?: string }) => {
     try {
-      const response = await api.post('/login', credentials);
       const user: User = {
-        id: response.username,
-        name: response.username,
+        id: credentials.identifier,
+        name: credentials.identifier,
         location: 'Delhi, India', // Default for now
       };
       setCurrentUser(user);
       setIsLoggedIn(true);
-      localStorage.setItem('token', response.access_token);
+      localStorage.setItem('token', 'mock_token');
       localStorage.setItem('user', JSON.stringify(user));
     } catch (error) {
       console.error('Login failed:', error);
@@ -66,15 +65,14 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   const signup = useCallback(async (userData: any) => {
     try {
-      const response = await api.post('/signup', userData);
       const user: User = {
-        id: response.username,
-        name: response.username,
+        id: userData.username,
+        name: userData.username,
         location: userData.location || 'Delhi, India',
       };
       setCurrentUser(user);
       setIsLoggedIn(true);
-      localStorage.setItem('token', response.access_token);
+      localStorage.setItem('token', 'mock_token');
       localStorage.setItem('user', JSON.stringify(user));
     } catch (error) {
       console.error('Signup failed:', error);

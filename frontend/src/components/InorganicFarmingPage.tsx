@@ -44,7 +44,7 @@ export default function InorganicFarmingPage() {
       </motion.div>
 
       {/* NPK Split Chart */}
-      <div className="vasundhara-card p-5 bg-card mb-6">
+      <div className="agroai-card p-5 bg-card mb-6">
         <h2 className="font-heading font-semibold text-foreground mb-4 flex items-center gap-2">
           <BarChart3 className="w-5 h-5 text-secondary" /> NPK Requirement Chart (kg/ha)
         </h2>
@@ -81,7 +81,7 @@ export default function InorganicFarmingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
-            className="vasundhara-card p-5 bg-card"
+            className="agroai-card p-5 bg-card"
           >
             <div className="flex items-center gap-2 mb-3">
               <span className="text-2xl">{f.icon}</span>
@@ -104,7 +104,7 @@ export default function InorganicFarmingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
-            className="vasundhara-card p-5 bg-card"
+            className="agroai-card p-5 bg-card"
           >
             <h3 className="text-base font-heading font-semibold text-foreground mb-1">{m.name}</h3>
             <span className="text-xs bg-secondary/15 text-secondary rounded-full px-2 py-0.5 font-medium">{m.qty}</span>
@@ -124,7 +124,7 @@ export default function InorganicFarmingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
-            className="vasundhara-card p-5 bg-card"
+            className="agroai-card p-5 bg-card"
           >
             <div className="flex items-center justify-between mb-2">
               <h3 className="text-base font-heading font-semibold text-foreground">{t.method}</h3>
@@ -137,7 +137,7 @@ export default function InorganicFarmingPage() {
       </div>
 
       {/* Yield Maximization */}
-      <div className="vasundhara-card p-5 bg-card mb-6">
+      <div className="agroai-card p-5 bg-card mb-6">
         <h3 className="font-heading font-semibold text-foreground mb-3 flex items-center gap-2">
           <TrendingUp className="w-5 h-5 text-secondary" /> Yield Maximization Plan
         </h3>

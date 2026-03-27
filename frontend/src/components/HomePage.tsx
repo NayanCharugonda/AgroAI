@@ -41,7 +41,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="vasundhara-hero-bg min-h-[90vh] flex items-center relative overflow-hidden">
+      <section className="agroai-hero-bg min-h-[90vh] flex items-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           {[...Array(20)].map((_, i) => (
             <motion.div
@@ -65,7 +65,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               <Leaf className="w-4 h-4 text-primary-foreground" />
               <span className="text-primary-foreground text-sm font-medium">AI-Powered Farming Platform</span>
             </motion.div>
-            <h1 className="text-5xl md:text-7xl font-heading font-black text-primary-foreground mb-6 leading-tight">Vasundhara</h1>
+            <h1 className="text-5xl md:text-7xl font-heading font-black text-primary-foreground mb-6 leading-tight">AgroAI</h1>
             <p className="text-xl md:text-2xl text-primary-foreground/80 mb-8 max-w-2xl font-body leading-relaxed">
               Your intelligent farming companion. Get crop recommendations, weather alerts, disease detection, and market insights — all powered by AI and voice control.
             </p>
@@ -100,7 +100,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
                 onClick={() => handleFeatureClick(f.page)}
-                className="vasundhara-card p-6 cursor-pointer group relative overflow-hidden"
+                className="agroai-card p-6 cursor-pointer group relative overflow-hidden"
               >
                 {!isLoggedIn && (
                   <div className="absolute top-3 right-3">
@@ -122,7 +122,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       <section className="py-20 bg-primary">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary-foreground mb-4">Ready to Transform Your Farming?</h2>
-          <p className="text-primary-foreground/80 text-lg mb-8 max-w-xl mx-auto">Join thousands of farmers using Vasundhara to increase their yield and profits.</p>
+          <p className="text-primary-foreground/80 text-lg mb-8 max-w-xl mx-auto">Join thousands of farmers using AgroAI to increase their yield and profits.</p>
           <Button size="lg" onClick={() => onNavigate('login')} className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-heading font-semibold text-lg px-10 py-6 rounded-xl">
             Start Now — It's Free
           </Button>
@@ -132,7 +132,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       {/* Footer */}
       <footer className="py-12 bg-foreground">
         <div className="container mx-auto px-6 text-center">
-          <p className="text-background/60 font-body">© 2026 Vasundhara — AI-Powered Farming Platform. Empowering farmers worldwide.</p>
+          <p className="text-background/60 font-body">© 2026 AgroAI — AI-Powered Farming Platform. Empowering farmers worldwide.</p>
         </div>
       </footer>
     </div>

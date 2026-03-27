@@ -143,7 +143,7 @@ export default function WeatherPage() {
 
       {/* Current weather */}
       {loading ? (
-        <div className="vasundhara-card p-12 mb-8 bg-card flex items-center justify-center">
+        <div className="agroai-card p-12 mb-8 bg-card flex items-center justify-center">
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
@@ -152,7 +152,7 @@ export default function WeatherPage() {
           </motion.div>
         </div>
       ) : error ? (
-        <div className="vasundhara-card p-12 mb-8 bg-card text-center">
+        <div className="agroai-card p-12 mb-8 bg-card text-center">
           <p className="text-destructive mb-4">{error}</p>
           <Button variant="outline" onClick={() => setCurrentLocation('Delhi, India')}>Reset to Default</Button>
         </div>
@@ -161,7 +161,7 @@ export default function WeatherPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="vasundhara-card p-8 mb-8 bg-card"
+            className="agroai-card p-8 mb-8 bg-card"
           >
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="flex items-center gap-6">
@@ -200,7 +200,7 @@ export default function WeatherPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.05 }}
-                className="vasundhara-card p-4 text-center bg-card"
+                className="agroai-card p-4 text-center bg-card"
               >
                 <p className="text-sm font-semibold text-foreground mb-2">{day.day}</p>
                 <WeatherIcon type={day.icon} size="w-8 h-8 mx-auto" />

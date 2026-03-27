@@ -45,7 +45,7 @@ export default function NotificationsPanel() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="absolute right-0 top-full mt-2 w-80 vasundhara-card bg-card z-50 overflow-hidden"
+              className="absolute right-0 top-full mt-2 w-80 agroai-card bg-card z-50 overflow-hidden"
             >
               <div className="p-4 border-b border-border flex items-center justify-between">
                 <h3 className="font-heading font-semibold text-foreground">Notifications</h3>
