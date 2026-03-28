@@ -92,6 +92,54 @@ export default function CropAdvisorPage() {
   const [location, setLocation] = useState(currentLocation);
   const [crops, setCrops] = useState<CropRecommendation[]>(getCropRecommendations(currentLocation));
   const [showFertilizers, setShowFertilizers] = useState(true);
+  const [isLocating, setIsLocating] = useState(false);
+
+  const getCurrentLocation = () => {
+    if (!navigator.geolocation) {
+      alert("Geolocation is not supported by your browser");
+      return;
+    }
+
+    setIsLocating(true);
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const { latitude, longitude } = position.coords;
+        try {
+          const res = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
+          );
+          const data = await res.json();
+          const city = 
+            data.address.city || 
+            data.address.town || 
+            data.address.village || 
+            data.address.suburb ||
+            data.address.county ||
+            data.address.state ||
+            "Unknown Location";
+            
+          setLocation(city);
+          setCurrentLocation(city);
+          setCrops(getCropRecommendations(city));
+        } catch (error) {
+          console.error("Error fetching location name:", error);
+          const coords = `${latitude.toFixed(4)}, ${longitude.toFixed(4)}`;
+          setLocation(coords);
+          setCurrentLocation(coords);
+          setCrops(getCropRecommendations(coords));
+        } finally {
+          setIsLocating(false);
+        }
+      },
+      (error) => {
+        console.error("Geolocation error:", error);
+        let errorMsg = "Unable to retrieve your location.";
+        if (error.code === 1) errorMsg = "Location permission denied.";
+        alert(errorMsg);
+        setIsLocating(false);
+      }
+    );
+  };
 
   const handleSearch = () => {
     if (location.trim()) {
@@ -109,7 +157,16 @@ export default function CropAdvisorPage() {
 
       <div className="flex gap-2 mb-8">
         <div className="relative flex-1 max-w-md">
-          <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+          <button 
+            onClick={getCurrentLocation}
+            disabled={isLocating}
+            className={`absolute left-3 top-1/2 -translate-y-1/2 z-10 p-1 rounded-full transition-colors ${
+              isLocating ? 'animate-pulse text-primary' : 'text-muted-foreground hover:text-primary hover:bg-primary/10'
+            }`}
+            title="Get current location"
+          >
+            <MapPin className="w-4 h-4" />
+          </button>
           <Input
             value={location}
             onChange={e => setLocation(e.target.value)}

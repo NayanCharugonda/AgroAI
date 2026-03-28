@@ -65,32 +65,92 @@ export default function VoiceAssistant({ onNavigate }: VoiceAssistantProps) {
   }, []);
 
   const processCommand = useCallback(async (text: string) => {
+    const lower = text.toLowerCase();
+
+    // 1. Navigation commands
+    for (const [page, keywords] of Object.entries(pageKeywords)) {
+      if (keywords.some(k => lower.includes(k))) {
+        const pageNames: Record<string, string> = {
+          home: 'Home Page', login: 'Login Page', dashboard: 'Dashboard',
+          advisor: 'Crop Advisor', weather: 'Weather Monitor', prices: 'Market Prices',
+          disease: 'Disease Detection', storage: 'Storage Finder', transport: 'Transport Booking',
+          growth: '3D Crop Growth', soil: 'Soil Analysis', organic: 'Organic Farming',
+          inorganic: 'Modern Farming', calendar: 'Farmer Calendar', marketplace: 'Marketplace',
+          subsidies: 'Subsidies & Loans',
+        };
+
+        if (page === 'login') {
+          const reply = 'Taking you to the login page. You can sign in with your voice!';
+          speak(reply, selectedLang);
+          onNavigate('login');
+          return;
+        }
+
+        const reply = `Navigating to ${pageNames[page]}.`;
+        speak(reply, selectedLang);
+        onNavigate(page);
+        return;
+      }
+    }
+
+    // 2. Location commands
+    const locationMatch = lower.match(/(?:location|weather in|weather for|go to|show me|set location to)\s+(.+)/i);
+    if (locationMatch) {
+      const loc = locationMatch[1].replace(/[?.!]/g, '').trim();
+      const capitalizedLoc = loc.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+      setCurrentLocation(capitalizedLoc);
+      const reply = `Location set to ${capitalizedLoc}. Showing weather and crop data for this area.`;
+      speak(reply, selectedLang);
+      onNavigate('weather');
+      return;
+    }
+
+    // 3. Scroll commands
+    if (lower.includes('scroll down')) {
+      window.scrollBy({ top: 400, behavior: 'smooth' });
+      speak('Scrolling down.', selectedLang);
+      return;
+    }
+    if (lower.includes('scroll up')) {
+      window.scrollBy({ top: -400, behavior: 'smooth' });
+      speak('Scrolling up.', selectedLang);
+      return;
+    }
+    if (lower.includes('scroll to top') || lower.includes('go to top')) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      speak('Scrolling to top.', selectedLang);
+      return;
+    }
+    if (lower.includes('scroll to bottom') || lower.includes('go to bottom')) {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      speak('Scrolling to bottom.', selectedLang);
+      return;
+    }
+
+    // 4. Fallback to Ollama AI for complex queries
     try {
-        setResponse("Thinking...");
+      setResponse("Thinking...");
 
-        const res = await fetch('http://localhost:5000/api/ai', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                message: text,
-                lang: selectedLang
-            })
-        });
+      const res = await fetch('http://localhost:5000/api/ai', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: text,
+          lang: selectedLang
+        })
+      });
 
-        const data = await res.json();
+      const data = await res.json();
+      const aiReply = data.reply;
 
-        const aiReply = data.reply;
-
-        setTranscript(text);
-
-        // Speak AI response
-        speak(aiReply, selectedLang);
+      setTranscript(text);
+      speak(aiReply, selectedLang);
 
     } catch (err) {
-        console.error(err);
-        speak("AI connection error", selectedLang);
+      console.error(err);
+      speak("AI connection error", selectedLang);
     }
-  }, [selectedLang, speak]);
+  }, [selectedLang, speak, onNavigate, setCurrentLocation]);
 
   const startListening = useCallback(() => {
     const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
