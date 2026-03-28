@@ -22,6 +22,7 @@ declare global {
 export default function Map({ center, zoom = 13, markers = [], onLocationDetected }: MapProps) {
     const mapRef = useRef<HTMLDivElement>(null);
     const googleMapRef = useRef<any>(null);
+    const markersRef = useRef<any[]>([]);
     const [apiError, setApiError] = useState(false);
 
     useEffect(() => {
@@ -51,63 +52,89 @@ export default function Map({ center, zoom = 13, markers = [], onLocationDetecte
                 }
             }
 
-            // Use provided center or fallback to a default
             let finalCenter = center || { lat: 17.385, lng: 78.4867 };
 
-            // Center with Geolocation if no center provided and supported
-            if (!center && navigator.geolocation) {
-                try {
-                    const position = await new Promise<GeolocationPosition>((resolve, reject) => {
-                        navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 5000 });
+            let map = googleMapRef.current;
+            
+            // React 18 Strict Mode destroys the DOM on unmount but keeps the ref.
+            // If the map container is empty, we must reinstantiate to avoid a blank screen!
+            if (!map || mapRef.current.children.length === 0) {
+                map = new window.google.maps.Map(mapRef.current, {
+                    center: finalCenter,
+                    zoom: zoom,
+                    mapId: 'DEMO_MAP_ID', 
+                    disableDefaultUI: false,
+                    zoomControl: true,
+                });
+
+                googleMapRef.current = map;
+
+                // Define a helper to draw user marker
+                const drawUserMarker = (position: { lat: number, lng: number }, title: string) => {
+                    new window.google.maps.Marker({
+                        position: position,
+                        map: map,
+                        title: title,
+                        icon: {
+                            path: window.google.maps.SymbolPath.CIRCLE,
+                            scale: 8,
+                            fillColor: "#4285F4",
+                            fillOpacity: 1,
+                            strokeWeight: 2,
+                            strokeColor: "white",
+                        }
                     });
-                    finalCenter = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude,
-                    };
-                    if (onLocationDetected) {
+                };
+
+                // Geolocation logic: async without blocking the map render
+                if (!center && navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        (position) => {
+                            const userLoc = {
+                                lat: position.coords.latitude,
+                                lng: position.coords.longitude,
+                            };
+                            map.setCenter(userLoc);
+                            drawUserMarker(userLoc, "Your Location");
+                            if (onLocationDetected) {
+                                onLocationDetected(userLoc.lat, userLoc.lng);
+                            }
+                        },
+                        (error) => {
+                            console.error("Geolocation failed:", error);
+                            drawUserMarker(finalCenter, "Default Location");
+                            if (onLocationDetected) {
+                                onLocationDetected(finalCenter.lat, finalCenter.lng);
+                            }
+                        },
+                        { timeout: 5000 }
+                    );
+                } else {
+                    drawUserMarker(finalCenter, center ? "Selected Location" : "Default Location");
+                    if (!center && onLocationDetected) {
                         onLocationDetected(finalCenter.lat, finalCenter.lng);
                     }
-                } catch (error) {
-                    console.error("Geolocation failed:", error);
                 }
+            } else {
+                map.setCenter(finalCenter);
+                map.setZoom(zoom);
             }
 
-            // The check for window.google is now handled by the apiError check above
-            const map = new window.google.maps.Map(mapRef.current, {
-                center: finalCenter,
-                zoom: zoom,
-                mapId: 'DEMO_MAP_ID', // Replace with your Map ID if needed
-                disableDefaultUI: false,
-                zoomControl: true,
-            });
-
-            googleMapRef.current = map;
-
-            // Add user marker
-            new window.google.maps.Marker({
-                position: finalCenter,
-                map,
-                title: "Your Location",
-                icon: {
-                    path: window.google.maps.SymbolPath.CIRCLE,
-                    scale: 8,
-                    fillColor: "#4285F4",
-                    fillOpacity: 1,
-                    strokeWeight: 2,
-                    strokeColor: "white",
-                }
-            });
+            // Clear old dynamically provided markers
+            markersRef.current.forEach((m) => m.setMap(null));
+            markersRef.current = [];
 
             // Add dynamically provided markers
             markers.forEach((markerData) => {
                 const marker = new window.google.maps.Marker({
                     position: markerData.position,
-                    map,
+                    map: map,
                     title: markerData.title,
                     icon: markerData.available === false ?
                         'http://maps.google.com/mapfiles/ms/icons/red-dot.png' :
                         'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
                 });
+                markersRef.current.push(marker);
 
                 // Info Window for markers
                 const infoWindow = new window.google.maps.InfoWindow({
